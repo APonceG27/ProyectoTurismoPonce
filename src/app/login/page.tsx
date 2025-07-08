@@ -1,5 +1,8 @@
 "use client"
+import { LoginIn } from "@/models/LoginIn";
+import axios from "axios";
 import React, { useState } from "react";
+import { LoginOut } from '../../models/LoginOut';
 
 const LoginPage: React.FC = () => {
 
@@ -7,12 +10,25 @@ const LoginPage: React.FC = () => {
     const [password, setPassword] = useState<string>("");
     const [mostrarModal, setMostrarModal] = useState<boolean>(false);
 
-    function ValidarCredenciales() {
+    async function ValidarCredenciales() {
+        /*Consumo de api y despliegue de error*/
+        const loginData = new LoginIn(correo, password)
 
-        if (correo === "adolfo" && password === "123")
-            alert("Redireccionando")
-        else
-            setMostrarModal(true);
+        try 
+        {
+            const respuesta = await axios.post<LoginOut>("http://localhost:4321/api/route/Validar_Credenciales_Usuario",
+                loginData
+            )
+
+            if(respuesta.data.codigoRespuesta == 0) {
+                console.log("Redireccionando");
+            } else {
+                setMostrarModal(true);
+            }
+
+        } catch {
+            console.log("Hay un error en el consumo del api")
+        }
     }
 
     const cerrarModal = () => {
