@@ -10,6 +10,7 @@ const LoginPage: React.FC = () => {
     const [correo, setCorreo] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [mostrarModal, setMostrarModal] = useState<boolean>(false);
+    const [mostrarVerificacion, setMostrarVerificacion] = useState<boolean>(false);
 
     const { login } = useAuth();
     const router = useRouter();
@@ -21,7 +22,7 @@ const LoginPage: React.FC = () => {
             const respuestaLogin = await login(correo, password);
 
             if (respuestaLogin) {
-                router.push("reporteComentarios");
+                setMostrarVerificacion(true);
             }
             else {
                 setMostrarModal(true);
@@ -33,6 +34,10 @@ const LoginPage: React.FC = () => {
         }
     }
 
+    const manejoVerificado = () => {
+        router.push("reporteComentarios");
+    };
+
     const cerrarModal = () => {
         setMostrarModal(false);
     }
@@ -40,7 +45,6 @@ const LoginPage: React.FC = () => {
     {/* Login de la pantalla */ }
     return (
         <div>
-            <TestComponent></TestComponent>
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -70,10 +74,20 @@ const LoginPage: React.FC = () => {
             </div>
 
             {
+                mostrarVerificacion && (
+                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                        <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md relative">
+                            <TestComponent verificado={manejoVerificado} />
+                        </div>
+                    </div>
+                )
+            }
+
+            {
                 mostrarModal && (
                     <VentanaMensajesComponent
-                        mostrar = {mostrarModal}
-                        mensaje = "Credenciales incorrectas"
+                        mostrar={mostrarModal}
+                        mensaje="Credenciales incorrectas"
                         onClose={cerrarModal}
                     ></VentanaMensajesComponent>
                 )
