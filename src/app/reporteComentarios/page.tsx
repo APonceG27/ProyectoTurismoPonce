@@ -3,16 +3,41 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { ComentarioOut, ReporteComentariosOut } from "@/models/ReporteComentariosOut";
 import MenuComponent from "@/componentes/MenuComponent";
+import { useAuth } from '../../context/AuthContext';
+import { useRouter } from "next/navigation";
+import VentanaMensajesComponent from "@/componentes/VentanaMensajesComponent";
 
 
 const ReporteComentarios: React.FC = () => {
+    const router = useRouter();
+    const { estaAutenticado, user} = useAuth();
     const [filtro, setFiltro] = useState<string>("");
-    const [comentarios, setComentarios] = useState<ComentarioOut[]>([])
     const [loading, setLoading] = useState<boolean>(true);
+    const [comentarios, setComentarios] = useState<ComentarioOut[]>([])
+    const [mostrarModal, setMostrarModal] = useState<boolean>(false);
+    const [mensajeModal, setMensajeModal] = useState<string>("");
+
+
+
+    useEffect(() => {
+        if (!estaAutenticado) {
+            setMensajeModal("Usted no está logueado en la aplicación.")
+            setMostrarModal(true);
+            return;
+        }
+
+        if (user?.rol !== "1" && user?.rol !== "2") {
+            setMensajeModal("Usted no tiene los permisos para ver este apartado.")
+            setMostrarModal(true);
+            return;
+        }
+        
+    }, [estaAutenticado])
+
 
     useEffect(() => {
         const obtenerComentarios = async () => {
-            const respuesta = await axios.get<ReporteComentariosOut>("http://localhost:4321/api/route/Obtener_Comentarios");
+            const respuesta = await axios.get<ReporteComentariosOut>("https://ponceturismo-vlaprojectbackend-6616686a9df1.herokuapp.com/api/route/Obtener_Comentarios");
 
             if (respuesta.data.codigoRespuesta === 0) {
                 setComentarios(respuesta.data.detalle)
@@ -20,7 +45,8 @@ const ReporteComentarios: React.FC = () => {
             }
         }
 
-        obtenerComentarios();
+        if(estaAutenticado)
+            obtenerComentarios();
 
     }, []);
 
@@ -32,14 +58,24 @@ const ReporteComentarios: React.FC = () => {
             || comentario.comentario.toUpperCase().includes(filtro.toUpperCase()))
     }, [filtro, comentarios])
 
+    const cerrarModal = () => {
+        setMostrarModal(false);
+        router.push("/login");
+    }
+
     return (
         <div>
             <MenuComponent></MenuComponent>
+            <VentanaMensajesComponent
+                mostrar={mostrarModal}
+                mensaje={mensajeModal}
+                onClose={cerrarModal}></VentanaMensajesComponent>
+
             <div className="max-w-6xl mx-auto px-4 py-6">
                 <input
-                value={filtro}
-                onChange={(e) => setFiltro(e.target.value)}
-                placeholder="Digite el filtro"></input>
+                    value={filtro}
+                    onChange={(e) => setFiltro(e.target.value)}
+                    placeholder="Digite el filtro"></input>
                 <h1>{
                     loading ? (<p>Cargando usuarios...</p>) : (
                         <div className="overflow-x-auto rounded-lg shadow-md">
@@ -73,6 +109,7 @@ const ReporteComentarios: React.FC = () => {
                 }</h1>
 
             </div>
+
         </div>
     )
 }
