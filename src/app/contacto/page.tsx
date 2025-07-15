@@ -46,7 +46,7 @@ const ContactoPage: React.FC = () => {
                             <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Correo electrónico" />
                         </div>
                     </div>
-                    <h2 className="mb-4">Seleccione una provincia y una atracción</h2>
+                    <p className="mb-4">Seleccione una provincia y una atracción</p>
                     <div className="grid md:grid-cols-2 md:gap-6">
                         <div className="relative z-0 w-full mb-5 group">
                             <select
@@ -81,7 +81,7 @@ const ContactoPage: React.FC = () => {
                             }
                         </div>
                     </div>
-                    <h2 className="mb-4">Seleccione una modalidad</h2>
+                    <p className="mb-4">Seleccione una modalidad</p>
                     <div className="flex items-center mb-4">
                         <input id="option-1" type="radio" name="options" value="TI" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" defaultChecked/>
                         <label htmlFor="option-1" className="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -95,7 +95,7 @@ const ContactoPage: React.FC = () => {
                         </label>
                     </div>
                     <div className="mb-8">
-                        <h2 className="mb-4">Consultas para la agencia</h2>
+                        <p className="mb-4">Consultas para la agencia</p>
                         <textarea id="message"  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Deja tus comentarios"></textarea>
                     </div>
                     <button type="submit" className="btn-skyblue w-full text-gray-900 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Enviar Comentario</button>
