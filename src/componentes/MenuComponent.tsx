@@ -21,7 +21,7 @@ const MenuComponent: React.FC = () => {
             <nav className="menu-component bg-white">
                 <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
                     <Link
-                        href="/"
+                        href="/home"
                         className="text-2xl font-bold text-blue-600">
                         <img className="menu-logo" src="/CRTurismoLogo.jpeg" alt="logo" />
                     </Link>
@@ -52,6 +52,7 @@ const MenuComponent: React.FC = () => {
                         </button>
                     </div>
                     <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
+                        <li><Link href="/home">Inicio</Link></li>
                         <li><Link href="/testimonios">Testimonios</Link></li>
                         <li><Link href="/contacto">Contacto</Link></li>
                         <li className="relative group">
@@ -69,6 +70,7 @@ const MenuComponent: React.FC = () => {
                 {
                     isOpen && (
                         <ul className="md:hidden px-4 pb-4 space-y-2 text-gray-700 font-medium">
+                            <li><Link href="/home">Inicio</Link></li>
                             <li><Link href="/testimonios">Testimonios</Link></li>
                             <li><Link href="/contacto">Contacto</Link></li>
                             <li>
