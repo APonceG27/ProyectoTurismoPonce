@@ -21,7 +21,7 @@ const TestimonioPage: React.FC = () => {
             imagen: "/Testimonio3.jpg"
         },
         {
-            nombre: "Camila Rojas",
+            nombre: "Camilo Rojas",
             comentario: "Lo mejor de nuestras vacaciones fue descubrir lugares que no salen en las guías turísticas. ¡Gracias por mostrarnos lo auténtico!",
             imagen: "/Testimonio4.jpg"
         }

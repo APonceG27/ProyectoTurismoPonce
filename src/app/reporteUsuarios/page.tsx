@@ -46,9 +46,9 @@ const ReporteUsuarios: React.FC = () => {
     return (<div>
         <MenuComponent></MenuComponent>
         <div className="max-w-6xl mx-auto px-4 py-6">
-            <div className="reportes-input-container">
+            <div>
                 <input
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-md p-2.5 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value={filtro}
                     onChange={(e) => setFiltro(e.target.value)}
                     placeholder="Digite el filtro"></input>
