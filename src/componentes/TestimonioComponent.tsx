@@ -19,8 +19,8 @@ const TestimonioComponent: React.FC<TestimonioProp> = ({ nombre, comentario, ima
                         src={imagen}
                         width={100}
                         height={100} />
-                    <p className="text-sm text-gray-700 dark:text-gray-400 mb-4 italic">"{comentario}"</p>
-                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">-{nombre}</h5>
+                    <p className="text-sm text-gray-700 dark:text-gray-400 mb-4 italic">{comentario}</p>
+                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{nombre}</h5>
                 </div>
             </div>
         </div>
