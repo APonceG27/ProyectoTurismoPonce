@@ -36,7 +36,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" type="image/png" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} ${dmSerif.variable} antialiased`}>
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
