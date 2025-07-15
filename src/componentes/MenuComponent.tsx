@@ -8,7 +8,7 @@ const MenuComponent: React.FC = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [isReportOpen, setIsReportOpen] = useState<boolean>(false);
-    const { logout, user } = useAuth();
+    const { logout } = useAuth();
     const router = useRouter();
 
     const manejarLogout = () => {

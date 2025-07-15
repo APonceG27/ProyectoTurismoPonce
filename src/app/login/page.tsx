@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import VentanaMensajesComponent from "@/componentes/VentanaMensajesComponent";
 import TestComponent from "@/componentes/TestComponent";
 import "../login.css";
-import Image from 'next/image';
 
 const LoginPage: React.FC = () => {
 
