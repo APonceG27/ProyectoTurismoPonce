@@ -1,20 +1,29 @@
 'use client'
+import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const MenuComponent: React.FC = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [isReportOpen, setIsReportOpen] = useState<boolean>(false)
+    const [isReportOpen, setIsReportOpen] = useState<boolean>(false);
+    const { logout, user } = useAuth();
+    const router = useRouter();
+
+    const manejarLogout = () => {
+        logout();
+        router.push("/login");
+    }
 
     return (
         <div>
-            <nav className="bg-white border-b shadow-md">
+            <nav className="menu-component bg-white">
                 <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
                     <Link
                         href="/"
                         className="text-2xl font-bold text-blue-600">
-                        Mi sitio turistico
+                        <img className="menu-logo" src="/CRTurismoLogo.jpeg" alt="logo" />
                     </Link>
                     <div className="md:hidden">
                         <button
@@ -43,7 +52,7 @@ const MenuComponent: React.FC = () => {
                         </button>
                     </div>
                     <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
-                        <li><Link href="/testimonio">Testimonios</Link></li>
+                        <li><Link href="/testimonios">Testimonios</Link></li>
                         <li><Link href="/contacto">Contacto</Link></li>
                         <li className="relative group">
                             <button>Reportes</button>
@@ -52,29 +61,35 @@ const MenuComponent: React.FC = () => {
                                 <li className="block px-4 py-2 hover:bg-gray-100"><Link href='/reporteComentarios'>Comentarios</Link></li>
                             </ul>
                         </li>
+                        <li>
+                            <button onClick={manejarLogout}>Salir</button>
+                        </li>
                     </ul>
                 </div>
                 {
                     isOpen && (
                         <ul className="md:hidden px-4 pb-4 space-y-2 text-gray-700 font-medium">
-                            <li><Link href="/testimonio">Testimonios</Link></li>
+                            <li><Link href="/testimonios">Testimonios</Link></li>
                             <li><Link href="/contacto">Contacto</Link></li>
                             <li>
-                                <button 
+                                <button
                                     className="w-full text-left"
-                                    onClick={()=>setIsReportOpen(!isReportOpen)}>
-                                        Reportes {
-                                            isReportOpen ? '▲' : '▼'
-                                        }
+                                    onClick={() => setIsReportOpen(!isReportOpen)}>
+                                    Reportes {
+                                        isReportOpen ? '▲' : '▼'
+                                    }
                                 </button>
                                 {
-                                    isReportOpen &&(
+                                    isReportOpen && (
                                         <ul className="pl-4 mt-1 space-y-1">
                                             <li><Link href='/reporteUsuarios'>Usuarios</Link></li>
                                             <li><Link href='/reporteComentarios'>Comentarios</Link></li>
                                         </ul>
                                     )
                                 }
+                            </li>
+                            <li>
+                                <button onClick={manejarLogout}>Salir</button>
                             </li>
                         </ul>
                     )

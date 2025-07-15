@@ -24,3 +24,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.menu-component {
+  border-bottom: 3px solid #FF6F61;
+}
+
+.menu-logo {
+  width: 125px;
+}
+
+.ventana-mensajes-bg {
+  background-color: #FFF8DC;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn-skyblue {
+  background-color: #87CEEB;
+  cursor: pointer;
+}
+
+.btn-skyblue:hover {
+  background-color: #6DA9C0;
+}
+
+.reportes-input-container {
+  max-width: 50%;
+}
+
+.table-header {
+  background-color: #FF6F61;
+}

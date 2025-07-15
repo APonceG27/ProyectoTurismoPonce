@@ -10,7 +10,7 @@ import VentanaMensajesComponent from "@/componentes/VentanaMensajesComponent";
 
 const ReporteComentarios: React.FC = () => {
     const router = useRouter();
-    const { estaAutenticado, user} = useAuth();
+    const { estaAutenticado, user } = useAuth();
     const [filtro, setFiltro] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
     const [comentarios, setComentarios] = useState<ComentarioOut[]>([])
@@ -31,7 +31,7 @@ const ReporteComentarios: React.FC = () => {
             setMostrarModal(true);
             return;
         }
-        
+
     }, [estaAutenticado])
 
 
@@ -45,7 +45,7 @@ const ReporteComentarios: React.FC = () => {
             }
         }
 
-        if(estaAutenticado)
+        if (estaAutenticado)
             obtenerComentarios();
 
     }, []);
@@ -72,19 +72,22 @@ const ReporteComentarios: React.FC = () => {
                 onClose={cerrarModal}></VentanaMensajesComponent>
 
             <div className="max-w-6xl mx-auto px-4 py-6">
-                <input
-                    value={filtro}
-                    onChange={(e) => setFiltro(e.target.value)}
-                    placeholder="Digite el filtro"></input>
+                <div className="reportes-input-container">
+                    <input
+                        className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-md p-2.5 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value={filtro}
+                        onChange={(e) => setFiltro(e.target.value)}
+                        placeholder="Digite el filtro"></input>
+                </div>
                 <h1>{
                     loading ? (<p>Cargando usuarios...</p>) : (
                         <div className="overflow-x-auto rounded-lg shadow-md">
                             <table className="min-w-full divide-y divide-gray-200 bg-white">
-                                <thead className="bg-blue-600 text-white">
+                                <thead className="table-header text-white">
                                     <tr>
                                         <th className="px-6 py-3 text-left text-sm font-semibold">Nombre</th>
                                         <th className="px-6 py-3 text-left text-sm font-semibold">Provincia</th>
-                                        <th className="px-6 py-3 text-left text-sm font-semibold">Atraccion</th>
+                                        <th className="px-6 py-3 text-left text-sm font-semibold">Atracción</th>
                                         <th className="px-6 py-3 text-left text-sm font-semibold">Modalidad</th>
                                         <th className="px-6 py-3 text-left text-sm font-semibold">Comentario</th>
                                     </tr>
