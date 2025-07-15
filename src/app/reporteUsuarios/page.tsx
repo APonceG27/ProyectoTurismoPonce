@@ -46,18 +46,21 @@ const ReporteUsuarios: React.FC = () => {
     return (<div>
         <MenuComponent></MenuComponent>
         <div className="max-w-6xl mx-auto px-4 py-6">
-            <input
-                value={filtro}
-                onChange={(e) => setFiltro(e.target.value)}
-                placeholder="Digite el filtro"></input>
+            <div className="reportes-input-container">
+                <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-md p-2.5 mb-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    value={filtro}
+                    onChange={(e) => setFiltro(e.target.value)}
+                    placeholder="Digite el filtro"></input>
+            </div>
             <div className="overflow-x-auto rounded-lg shadow-md">
                 <table className="min-w-full divide-y divide-gray-200 bg-white">
-                    <thead className="bg-blue-600 text-white">
+                    <thead className="table-header text-white">
                         <tr>
                             <th className="px-6 py-3 text-left text-sm font-semibold">Nombre</th>
                             <th className="px-6 py-3 text-left text-sm font-semibold">Correo</th>
                             <th className="px-6 py-3 text-left text-sm font-semibold">Rol</th>
-                            <th className="px-6 py-3 text-left text-sm font-semibold">Telefono</th>
+                            <th className="px-6 py-3 text-left text-sm font-semibold">Teléfono</th>
 
                         </tr>
                     </thead>

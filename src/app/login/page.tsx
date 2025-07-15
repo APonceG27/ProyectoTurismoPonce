@@ -4,6 +4,8 @@ import { useAuth } from '../../context/AuthContext';
 import { useRouter } from "next/navigation";
 import VentanaMensajesComponent from "@/componentes/VentanaMensajesComponent";
 import TestComponent from "@/componentes/TestComponent";
+import "../login.css";
+import Image from 'next/image';
 
 const LoginPage: React.FC = () => {
 
@@ -42,13 +44,14 @@ const LoginPage: React.FC = () => {
         setMostrarModal(false);
     }
 
-    {/* Login de la pantalla */ }
+    {/* Login de la pantalla */ } 
     return (
-        <div>
+        <div className="relative min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/loginImg.jpg')", }}>
+            <div className="login-opacity absolute inset-0 bg-gray-900 bg-opacity-30"></div>
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div className="relative w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900">Bienvenidos a CR Turismo</h1>
+                        <img src="/CRTurismoLogo.jpeg" className="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="logo"></img>
                         <div>
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Digite su correo:</label>
                             <input
@@ -68,7 +71,7 @@ const LoginPage: React.FC = () => {
                         </div>
                         <button
                             onClick={ValidarCredenciales}
-                            className="bg-blue-500 w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Confirma credenciales</button>
+                            className="btn-skyblue w-full text-gray-900 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Confirma credenciales</button>
                     </div>
                 </div>
             </div>
