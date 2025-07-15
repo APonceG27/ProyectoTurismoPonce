@@ -36,7 +36,7 @@ const LoginPage: React.FC = () => {
     }
 
     const manejoVerificado = () => {
-        router.push("reporteComentarios");
+        router.push("home");
     };
 
     const cerrarModal = () => {

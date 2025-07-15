@@ -79,7 +79,7 @@ const ReporteComentarios: React.FC = () => {
                         onChange={(e) => setFiltro(e.target.value)}
                         placeholder="Digite el filtro"></input>
                 </div>
-                <h1>{
+                <div>{
                     loading ? (<p>Cargando usuarios...</p>) : (
                         <div className="overflow-x-auto rounded-lg shadow-md">
                             <table className="min-w-full divide-y divide-gray-200 bg-white">
@@ -109,7 +109,7 @@ const ReporteComentarios: React.FC = () => {
                             </table>
                         </div>
                     )
-                }</h1>
+                }</div>
 
             </div>
 
